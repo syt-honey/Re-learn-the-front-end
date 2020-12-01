@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .container {
+      width: 500px;
+      height: 500px;
+      background: #fff;
+    }
+    #traffic-signal {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="traffic-signal"></div>
+  </div>
+  <script>
+    {
+      const colorList = [
+          {
+            color: 'green',
+            time: 3000
+          }, {
+            color: 'yellow',
+            time: 1000
+          }, {
+            color: 'red',
+            time: 2000
+      }];
+
+      const trafficSignalEl = document.getElementById('traffic-signal');
+
+      start();
+      
+      async function start() {
+        let index = 0;
+        while(true) {
+            if (index === colorList.length - 1) {
+                index = 0;
+            }
+            for([index, listItem] of colorList.entries()) {
+              setBgColor(trafficSignalEl, listItem.color);
+              await sleep(listItem.time);
+            }
+        }
+      }
+
+      function sleep(duration) {
+        return new Promise(function(resolve, reject) {
+            setTimeout(resolve,duration);
+        })
+      }
+
+      function setBgColor(el, color) {
+        el.style.backgroundColor = color;
+      }
+    }
+  </script>
+</body>
+</html>
