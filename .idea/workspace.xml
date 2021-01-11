@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e0c2711d-5da0-40aa-96e4-84ed59a50d25" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1mjhYqnkVqzrd9bXrw8XtLgro4w" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e0c2711d-5da0-40aa-96e4-84ed59a50d25" name="Default Changelist" comment="" />
+      <created>1610012957822</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1610012957822</updated>
+      <workItem from="1610012958924" duration="223000" />
+    </task>
+    <task id="LOCAL-00001" summary="feat: add arithmetic analyzer">
+      <created>1610013057814</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1610013057814</updated>
+    </task>
+    <task id="LOCAL-00002" summary="fix: add arithmetic analyzer link">
+      <created>1610013172341</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1610013172341</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat: add arithmetic analyzer" />
+    <MESSAGE value="fix: add arithmetic analyzer link" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: add arithmetic analyzer link" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="306" y="42" key="CommitChangelistDialog2" timestamp="1610013172260">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="306" y="42" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1610013172260" />
+    <state x="320" y="177" key="Vcs.Push.Dialog.v2" timestamp="1610013174068">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="320" y="177" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1610013174068" />
+  </component>
+</project>
