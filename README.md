@@ -7,3 +7,5 @@
 - [x] [TicTacToe](https://github.com/syt-honey/Re-learn-the-front-end/blob/main/ticTacToe.html)
 - [x] [寻路算法](https://github.com/syt-honey/Re-learn-the-front-end/blob/main/searching.html)  
 - [x] [实现一个四则运算解析器](https://github.com/syt-honey/Re-learn-the-front-end/blob/main/%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%E8%A7%A3%E6%9E%90%E5%99%A8/analyzer.html)
+- [x] [字符串处理算法：Trie、KMP、WildCard](https://github.com/syt-honey/Re-learn-the-front-end/blob/main/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/stringAnalyzer.html)
+
