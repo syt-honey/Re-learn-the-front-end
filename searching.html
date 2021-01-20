@@ -1,66 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Searching</title>
+    </head>
     <style>
         html,
         body {
-            margin: 0;
-            padding: 0;
+        	margin: 0;
+        	padding: 0;
         }
 
         .map-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
+        	display: flex;
+        	flex-direction: column;
+        	justify-content: center;
+        	align-items: center;
         }
 
         .save-button {
-            margin: 20px auto 10px;
-            padding: 5px 20px;
-            border-radius: 4px;
-            background: #4F8BEE;
-            color: #fff;
-            cursor: pointer;
-            border: none;
-            outline: none;
+        	margin: 20px auto 10px;
+        	padding: 5px 20px;
+        	border: none;
+        	border-radius: 4px;
+        	outline: none;
+        	background: #4f8bee;
+        	cursor: pointer;
+        	color: #fff;
         }
 
         .tip {
-            margin-bottom: 10px;
-            font-size: 14px;
-            color: #777373;
+        	margin-bottom: 10px;
+        	font-size: 14px;
+        	color: #777373;
         }
 
         #search-container {
-            width: 700px;
-            font-size: 0;
+        	width: 700px;
+        	font-size: 0;
         }
 
         .search-cell {
-            display: inline-block;
-            position: relative;
-            width: 6px;
-            height: 6px;
-            /* 消除多余的空隙：父级设置为0，当前元素正常设置。*/
-            font-size: 15px;
-            background: #d0cdcd;
-            border-bottom: 1px solid #fff;
-            border-right: 1px solid #fff;
-            cursor: pointer;
+        	display: inline-block;
+        	position: relative;
+        	border-right: 1px solid #fff;
+        	border-bottom: 1px solid #fff;
+        	width: 6px;
+        	height: 6px;
+        	background: #d0cdcd;
+        	cursor: pointer;
+        	/* 消除多余的空隙：父级设置为0，当前元素正常设置。*/
+        	font-size: 15px;
         }
 
         .search-cell:hover:after {
-            position: absolute;
-            left: 15px;
-            top: 5px;
-            width: 70px;
-            padding: 5px;
-            text-align: center;
-            background-color: rgba(0, 0, 0, .5);
-            border-radius: 5px;
-            color: #fff;
-            content: attr(positionOfPoint);
-            z-index: 2;
+        	position: absolute;
+        	left: 15px;
+        	top: 5px;
+        	z-index: 2;
+        	padding: 5px;
+        	border-radius: 5px;
+        	width: 70px;
+        	background-color: rgba(0, 0, 0, .5);
+        	text-align: center;
+        	color: #fff;
+        	content: attr(positionOfPoint);
         }
     </style>
     
@@ -72,9 +78,8 @@
         </div>
     </body>
 
-    <script src="../utils/index.js"></script>
-
-    <script>
+    <script type="module">
+        import { utils } from "./utils";
         const rowMap = sessionStorage['map'] ? JSON.parse(sessionStorage['map']) : Array(10000).fill(0);
 
         // 注册全局监听事件
@@ -162,7 +167,57 @@
             let table = Object.create(map);
             let queue = new Sorted([start], (a, b) => distance(a) - distance(b));
 
+            container.children[start[0] * 100 + start[1]].style.background = 'red';
+
             let result = null;
+
+            while(queue.length) {
+                let [x, y] = queue.take();
+                if (x === end[0] && y === end[1]) {
+                    // 绘制路径
+                    const path = [];
+
+                    // 将最终的终点也放入 path 中
+                    container.children[x * 100 + y].style.background = 'red';
+                    while (x !== start[0] || y !== start[1]) {
+                        path.push([x, y]);
+                        [x, y] = table[x * 100 + y];
+                        await utils.sleep(5);
+                        if (x === start[0] && y === start[1])
+                            continue;
+                        container.children[x * 100 + y].style.background = 'purple';
+                    }
+                    path.push([x, y]);
+                    result = path;
+                    break;
+                }
+
+                await insert(x - 1, y, [x, y]);
+                await insert(x + 1, y, [x, y]);
+                await insert(x, y - 1, [x, y]);
+                await insert(x, y + 1, [x, y]);
+            }
+
+            async function insert(x, y, pre) {
+                if (table[x * 100 + y]) {
+                    return;
+                }
+
+                if (outOfMap([x, y])) {
+                    return;
+                }
+
+                await utils.sleep(5);
+                if (x !== start[0] || y !== start[1]) {
+                    container.children[x * 100 + y].style.background = 'lightgreen';
+                }
+                table[x * 100 + y] = pre;
+                queue.give([x, y])
+            }
+
+            function distance(point) {
+                return (point[0] - end[0]) ** 2 + (point[1] - end[1]) ** 2;
+            }
 
             function reachable ([x, y]) {
                 return !(isObstacle([x - 1, y])
@@ -177,48 +232,6 @@
 
             function outOfMap ([x, y]) {
                 return x < 0 || x >= 100 || y < 0 || y >= 100;
-            }
-
-            function distance(point) {
-                return (point[0] - end[0]) ** 2 + (point[1] - end[1]) ** 2;
-            }
-
-            async function insert(x, y, pre) {
-                if (table[y * 100 + x]) {
-                    return;
-                }
-
-                if (outOfMap([x, y])) {
-                    return;
-                }
-
-                await window.utils.sleep(5);
-                container.children[y * 100 + x].style.background = 'lightgreen';
-                table[y * 100 + x] = pre;
-                queue.give([x, y])
-            }
-
-            while(queue.length) {
-                let [x, y] = queue.take();
-                if (x === end[0] && y === end[1]) {
-                    // 绘制路径
-                    const path = [];
-
-                    container.children[y * 100 + x].style.background = 'purple';
-                    while (x !== start[0] || y !== start[1]) {
-                        path.push([x, y]);
-                        [x, y] = table[y * 100 + x];
-                        await window.utils.sleep(5);
-                        container.children[y * 100 + x].style.background = 'purple';
-                    }
-                    result = path;
-                    break;
-                }
-
-                await insert(x - 1, y, [x, y]);
-                await insert(x + 1, y, [x, y]);
-                await insert(x, y - 1, [x, y]);
-                await insert(x, y + 1, [x, y]);
             }
 
             return result;

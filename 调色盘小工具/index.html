@@ -10,8 +10,8 @@
 
 <body>
 <div class="wrapper">
-    <div class="color-picker">
-        <div class="color-indicator"></div>
+    <div class="color-picker" name="palette">
+        <div class="color-indicator" name="palette"></div>
     </div>
 <!--     hover to paste-->
     <div class="preview"></div>
@@ -22,136 +22,60 @@
         <div class="slider-indicator" name="alpha"></div>
     </div>
     <div class="result">rgba(255, 255, 255, 1)</div>
-</div>
-<script src="./proxy.js"></script>
-<script src="./drag.js"></script>
+<!--    TODO 动态模版-->
 <!--<div id="template">Hello,{{name}}</div>-->
+</div>
+<!--<script src="./proxy.js"></script>-->
 </body>
-<script>
-    const palettes = Array.prototype.slice.call(document.querySelectorAll('.palette'));
-    const sliders = Array.prototype.slice.call(document.querySelectorAll('.slider-indicator'));
-    const picker = document.querySelector('.color-picker');
-    const indicator = document.querySelector('.color-indicator');
-    const contexts = palettes.map((context) => {
-        const name = context.getAttribute('name');
-        const dragger = sliders.filter(ele => ele.getAttribute('name') === name)[0];
+<script type="module">
+    import { DragContext } from './drag.js';
+    import { StyleRender } from './render.js';
 
-        return new DragContext({
-            $context: context,
-            $dragger: dragger,
+    const doms = {};
+    const dragContexts = [];
+
+    kickPicker();
+    kickSliders();
+    StyleRender.getInstance(doms, dragContexts);
+
+    function kickPicker () {
+        // 获取色盘有关节点并缓存
+        const picker = document.querySelector('.color-picker');
+        const indicator = document.querySelector('.color-indicator');
+        doms.picker = picker;
+        doms.indicator = indicator;
+
+        const name = picker.getAttribute('name');
+        const context = new DragContext({
+            context: picker,
+            dragger: indicator,
             name,
-            direction: 'horizontal',
-            initX: 120
+            direction: 'both'
+        })
+
+        dragContexts.push(context);
+    }
+
+    function kickSliders () {
+        const palettes = Array.prototype.slice.call(document.querySelectorAll('.palette'));
+        const sliders = Array.prototype.slice.call(document.querySelectorAll('.slider-indicator'));
+        doms.palettes = palettes;
+        doms.sliders = sliders;
+
+        const contexts = palettes.map((context) => {
+            const name = context.getAttribute('name');
+            const dragger = sliders.filter(ele => ele.getAttribute('name') === name)[0];
+
+            return new DragContext({
+                context,
+                dragger,
+                name,
+                direction: 'horizontal',
+                initX: 120
+            });
         });
-    });
 
-    const name = picker.getAttribute('name');
-    const context = new DragContext({
-        $context: picker,
-        $dragger: indicator,
-        name,
-        direction: 'both'
-    })
+        dragContexts.push(...contexts);
+    }
 </script>
-<!--<script>-->
-<!--    // 收集依赖-->
-<!--    let colorPattern = reactive({-->
-<!--        r: 0,-->
-<!--        g: 0,-->
-<!--        b: 0-->
-<!--    });-->
-
-<!--    // 收集依赖对应的 callback-->
-<!--    effect(() => {-->
-<!--        document.getElementById("r").value = colorPattern.r;-->
-<!--    });-->
-
-<!--    effect(() => {-->
-<!--        document.getElementById("g").value = colorPattern.g;-->
-<!--    });-->
-
-<!--    effect(() => {-->
-<!--        document.getElementById("b").value = colorPattern.b;-->
-<!--    });-->
-
-<!--    effect(() => {-->
-<!--        document.getElementById('color-pattern').style.background = `rgb(${colorPattern.r}, ${colorPattern.g}, ${colorPattern.b})`;-->
-<!--    });-->
-
-<!--    effect(() => {-->
-<!--        document.getElementById("result").value = `${colorPattern.r}, ${colorPattern.g}, ${colorPattern.b}`;-->
-<!--    });-->
-
-<!--    document.getElementById('r').addEventListener('input', event => {-->
-<!--        colorPattern.r = event.target.value;-->
-<!--    });-->
-
-<!--    document.getElementById('g').addEventListener('input', event => {-->
-<!--        colorPattern.g = event.target.value;-->
-<!--    });-->
-
-<!--    document.getElementById('b').addEventListener('input', event => {-->
-<!--        colorPattern.b = event.target.value;-->
-<!--    });-->
-<!--</script>-->
-
-<!--<script>-->
-<!--    let reactivities = new Map();-->
-
-<!--    let handlers = new Map();-->
-<!--    let usedReactivities = [];-->
-<!--    function reactive(obj) {-->
-<!--        if (reactivities.has(obj)) {-->
-<!--            return reactivities.get(obj);-->
-<!--        }-->
-<!--        let proxy = new Proxy(obj, {-->
-<!--            get(obj, prop) {-->
-<!--                usedReactivities.push([obj, prop]);-->
-<!--                if (typeof obj[prop] == "object") {-->
-<!--                    return reactive(obj[prop]);-->
-<!--                }-->
-<!--                return obj[prop];-->
-<!--            },-->
-<!--            set(obj, prop, val) {-->
-<!--                obj[prop] = val;-->
-<!--                if (handlers.get(obj) && handlers.get(obj).get(prop)) {-->
-<!--                    for (let handler of handlers.get(obj).get(prop)) {-->
-<!--                        handler();-->
-<!--                    }-->
-<!--                }-->
-<!--                return obj[prop];-->
-<!--            },-->
-<!--        });-->
-<!--        reactivities.set(obj, proxy);-->
-<!--        reactivities.set(proxy, proxy);-->
-<!--        return proxy;-->
-<!--    }-->
-
-<!--    function effect(handler) {-->
-<!--        usedReactivities = [];-->
-<!--        handler();-->
-<!--        for (let usedReactivity of usedReactivities) {-->
-<!--            let [obj, prop] = usedReactivity;-->
-<!--            if (!handlers.get(obj)) {-->
-<!--                handlers.set(obj, new Map());-->
-<!--            }-->
-<!--            if (!handlers.get(obj).get(prop)) {-->
-<!--                handlers.get(obj).set(prop, []);-->
-<!--            }-->
-
-<!--            handlers.get(obj).get(prop).push(handler);-->
-<!--        }-->
-<!--    }-->
-
-<!--    let range = document.createRange();-->
-<!--    let template = document.getElementById("template");-->
-<!--    range.setStart(template.childNodes[0], 6);-->
-<!--    range.setEnd(template.childNodes[0], 14);-->
-
-<!--    let data = reactive({ name: "world" });-->
-<!--    effect(() => {-->
-<!--        range.extractContents();-->
-<!--        range.insertNode(document.createTextNode(data.name));-->
-<!--    });-->
-<!--</script>-->
 </html>

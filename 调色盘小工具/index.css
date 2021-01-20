@@ -3,7 +3,6 @@ body {
     margin: 0;
 }
 
-
 .wrapper {
     margin: 150px auto;
     box-shadow: 0 0 7px 2px rgba(0,0,0,.08);
@@ -23,18 +22,20 @@ body {
 
 .color-indicator {
     position: absolute;
-    /*left: -6px;*/
-    /*top: -6px;*/
+    left: -6px;
+    top: -6px;
     width: 12px;
     height: 12px;
-    /*transform: translate(-6px, -6px);*/
+    transform: translate(-6px, -6px);
     border-radius: 50%;
     border: 1px solid white;
+    cursor: pointer;
 }
 
 .preview {
     float: left;
     margin-left: 20px;
+    border: 1px solid #eee;
     border-radius: 50%;
     width: 32px;
     height: 32px;
@@ -48,10 +49,11 @@ body {
     position: relative;
     margin-left: 75px;
     margin-bottom: 10px;
-    border-radius: 1px;
+    border-radius: 4px;
     width: 155px;
     height: 12px;
     background: darkblue;
+    cursor: pointer;
 }
 
 .palette + .palette {
@@ -64,19 +66,19 @@ body {
 }
 
 .hue-slider {
-    background: linear-gradient(to right,
+    background: linear-gradient(to left,
         hsl(0, 100%, 50%) 0%,
-        hsl(330, 100%, 50%) 8.33%,
-        hsl(300, 100%, 50%) 16.67%,
-        hsl(270, 100%, 50%) 25%,
-        hsl(240, 100%, 50%) 33.33%,
-        hsl(210, 100%, 50%) 41.67%,
+        hsl(30, 100%, 50%) 8.33%,
+        hsl(60, 100%, 50%) 16.67%,
+        hsl(90, 100%, 50%) 25%,
+        hsl(120, 100%, 50%) 33.33%,
+        hsl(150, 100%, 50%) 41.67%,
         hsl(180, 100%, 50%) 50%,
-        hsl(150, 100%, 50%) 58.33%,
-        hsl(120, 100%, 50%) 66.67%,
-        hsl(90, 100%, 50%) 75%,
-        hsl(60, 100%, 50%) 83.33%,
-        hsl(30, 100%, 50%) 91.67%,
+        hsl(210, 100%, 50%) 58.33%,
+        hsl(240, 100%, 50%) 66.67%,
+        hsl(270, 100%, 50%) 75%,
+        hsl(300, 100%, 50%) 83.33%,
+        hsl(330, 100%, 50%) 91.67%,
         hsl(0, 100%, 50%) 100%
     );
 }

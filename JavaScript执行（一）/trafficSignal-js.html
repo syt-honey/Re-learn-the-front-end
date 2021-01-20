@@ -6,64 +6,38 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>TrafficSignal</title>
   <style>
-    .container {
-      width: 500px;
-      height: 500px;
-      background: #fff;
-    }
     #traffic-signal {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div id="traffic-signal"></div>
-  </div>
-  <script>
-    {
-      const colorList = [
-          {
-            color: 'green',
-            time: 3000
-          }, {
-            color: 'yellow',
-            time: 1000
-          }, {
-            color: 'red',
-            time: 2000
-      }];
+  <div id="traffic-signal"></div>
+</body>
+<script type="module">
+    import { utils } from "../utils";
+    const colorMap = {
+        red: 1000,
+        yellow: 2000,
+        green: 5000
+    };
+    const signal = document.getElementById('traffic-signal');
 
-      const trafficSignalEl = document.getElementById('traffic-signal');
+    start();
 
-      start();
-      
-      async function start() {
-        let index = 0;
+    async function start() {
         while(true) {
-            if (index === colorList.length - 1) {
-                index = 0;
-            }
-            for([index, listItem] of colorList.entries()) {
-              setBgColor(trafficSignalEl, listItem.color);
-              await sleep(listItem.time);
+            for(let color in colorMap) {
+                setColor(signal, color);
+                await utils.sleep(colorMap[color]);
             }
         }
-      }
-
-      function sleep(duration) {
-        return new Promise(function(resolve, reject) {
-            setTimeout(resolve,duration);
-        })
-      }
-
-      function setBgColor(el, color) {
-        el.style.backgroundColor = color;
-      }
     }
-  </script>
-</body>
+
+    function setColor(dom, color) {
+        dom.style.backgroundColor = color;
+    }
+</script>
 </html>
