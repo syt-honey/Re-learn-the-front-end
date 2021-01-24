@@ -8,4 +8,5 @@
 - [x] [寻路算法](https://github.com/syt-honey/Re-learn-the-front-end/blob/main/searching.html)  
 - [x] [实现一个四则运算解析器](https://github.com/syt-honey/Re-learn-the-front-end/blob/main/%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%E8%A7%A3%E6%9E%90%E5%99%A8/analyzer.html)
 - [x] [字符串处理算法：Trie、KMP、WildCard](https://github.com/syt-honey/Re-learn-the-front-end/blob/main/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/stringAnalyzer.html)
+- [x] [chrome 控制台调色器：数据绑定](https://github.com/syt-honey/Re-learn-the-front-end/blob/main/%E8%B0%83%E8%89%B2%E7%9B%98%E5%B0%8F%E5%B7%A5%E5%85%B7/index.html)
 
