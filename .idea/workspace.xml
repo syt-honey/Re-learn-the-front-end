@@ -2,18 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e0c2711d-5da0-40aa-96e4-84ed59a50d25" name="Default Changelist" comment="feat: 调色器基本完成">
-      <change afterPath="$PROJECT_DIR$/utils/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/调色盘小工具/render.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaScript执行（一）/trafficSignal-js.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript执行（一）/trafficSignal-js.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/searching.html" beforeDir="false" afterPath="$PROJECT_DIR$/searching.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ticTacToe.html" beforeDir="false" afterPath="$PROJECT_DIR$/ticTacToe.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/四则运算解析器/analyzer.html" beforeDir="false" afterPath="$PROJECT_DIR$/四则运算解析器/analyzer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/字符串处理/NOTE.md" beforeDir="false" afterPath="$PROJECT_DIR$/字符串处理/NOTE.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/调色盘小工具/drag.js" beforeDir="false" afterPath="$PROJECT_DIR$/调色盘小工具/drag.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/调色盘小工具/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/调色盘小工具/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/调色盘小工具/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/调色盘小工具/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/调色盘小工具/proxy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/调色盘小工具/proxy.js" beforeDir="false" afterPath="$PROJECT_DIR$/调色盘小工具/proxy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/调色盘小工具/render.js" beforeDir="false" afterPath="$PROJECT_DIR$/调色盘小工具/render.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +42,7 @@
       <option name="presentableId" value="Default" />
       <updated>1610012957822</updated>
       <workItem from="1610012958924" duration="223000" />
-      <workItem from="1611135603865" duration="552000" />
+      <workItem from="1611135603865" duration="2379000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add arithmetic analyzer">
       <created>1610013057814</created>
@@ -64,7 +58,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610013172341</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="feat: 调色器基本完成、全局方法调用方式修改">
+      <created>1611136191638</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1611136191638</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -73,16 +74,21 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: add arithmetic analyzer" />
     <MESSAGE value="fix: add arithmetic analyzer link" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: add arithmetic analyzer link" />
+    <MESSAGE value="feat: 调色器基本完成、全局方法调用方式修改" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 调色器基本完成、全局方法调用方式修改" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="306" y="42" key="CommitChangelistDialog2" timestamp="1610013172260">
+    <state x="746" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1611136135513">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="306" y="42" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1610013172260" />
-    <state x="320" y="177" key="Vcs.Push.Dialog.v2" timestamp="1610013174068">
+    <state x="746" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1611136135513" />
+    <state x="306" y="42" key="CommitChangelistDialog2" timestamp="1611136191508">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="177" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1610013174068" />
+    <state x="306" y="42" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1611136191508" />
+    <state x="320" y="177" key="Vcs.Push.Dialog.v2" timestamp="1611136193196">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="320" y="177" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1611136193196" />
   </component>
 </project>
